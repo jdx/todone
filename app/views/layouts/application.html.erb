@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ToDone</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class='navbar navbar-default'>
+  <a class='navbar-brand' href='/'>ToDone</a>
+  <ul class='nav navbar-nav'>
+    <li><%= link_to "Tasks", tasks_path %></li>
+  </ul>
+</nav>
+
+<div class='container'>
+  <% if flash[:info] %>
+    <div class='alert alert-info'>
+      <%= flash[:info] %>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
+
+</body>
+</html>

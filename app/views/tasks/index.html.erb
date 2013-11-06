@@ -1,0 +1,18 @@
+<h1>Tasks</h1>
+
+<ul class='list-group'>
+  <% @tasks.each do |task| %>
+    <li class='list-group-item clearfix'>
+      <%= task.name %>
+      <%= link_to "Done", task_path(task), method: :delete, class: 'btn btn-danger pull-right' %>
+    </li>
+  <% end %>
+</ul>
+
+<div class='jumbotron'>
+  <h3>New Task</h3>
+  <%= simple_form_for @task do |form| %>
+    <%= form.input :name, label: false %>
+    <%= form.submit "Add", class: 'btn btn-primary' %>
+  <% end %>
+</div>
