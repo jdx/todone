@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     @task.save!
     flash[:info] = "Added task: #{@task.name}"
     redirect_to tasks_path
