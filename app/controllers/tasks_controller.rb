@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   def index
     @task = Task.new
     @tasks = current_user.tasks
+    @tasks = @tasks.order(params[:sort]) if params[:sort]
   end
 
   def create
