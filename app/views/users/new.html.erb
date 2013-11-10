@@ -1,0 +1,11 @@
+<h2>Signup</h2>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.input :phone_number %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation, label: "Enter Password Again Please" %>
+  <br>
+  <%= f.submit "Signup", class: "btn btn-primary" %>
+<% end %>
