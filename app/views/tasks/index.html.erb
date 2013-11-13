@@ -8,10 +8,12 @@
 
 <ul class='list-group'>
   <% @tasks.each do |task| %>
-    <li class='list-group-item clearfix'>
+    <li data-id="<%= task.id %>" class='list-group-item clearfix <%= 'strikeout' if task.completed %>'>
       <%= task.name %>
       <%= time_ago_in_words task.created_at %> ago
-      <%= link_to "Done", task_path(task), method: :delete, class: 'btn btn-danger pull-right' %>
+      <%= form_for task do |f| %>
+        <%= f.check_box :completed, class: 'task-checkbox' %>
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108050637) do
+ActiveRecord::Schema.define(version: 20131113033208) do
 
   create_table "tasks", force: true do |t|
     t.integer  "list_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20131108050637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "completed"
   end
 
   create_table "users", force: true do |t|

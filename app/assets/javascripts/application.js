@@ -14,3 +14,34 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(function() {
+  $('.task-checkbox').click(function() {
+    var completed = this.checked;
+    var li = $(this).parents('li');
+    var id = li.data('id');
+    if(completed) {
+      li.addClass('strikeout');
+      $.ajax('/tasks/' + id, {
+        method: "PUT",
+        data: {
+          task: {
+            completed: true
+          }
+        }
+      });
+    }
+    else {
+      li.removeClass('strikeout');
+      $.ajax('/tasks/' + id, {
+        method: "PUT",
+        data: {
+          task: {
+            completed: false
+          }
+        }
+      });
+    }
+  });
+});
